@@ -1,0 +1,5 @@
+{
+  "appId": "com.family.expenseapp",
+  "appName": "ExpenseApp",
+  "webDir": "dist"
+}
