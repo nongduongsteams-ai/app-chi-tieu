@@ -31,16 +31,7 @@ const AppLayout = ({ children, onLogout }) => {
 };
 
 function App() {
-  const [user, setUserState] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const u = getUser();
-    if (u) {
-      setUserState(u);
-    }
-    setLoading(false);
-  }, []);
+  const [user, setUserState] = useState(() => getUser()); // Initialize with user from localStorage
 
   const handleLogin = (userData) => {
     setUserState(userData);
@@ -50,8 +41,6 @@ function App() {
     removeUser();
     setUserState(null);
   };
-
-  if (loading) return null;
 
   return (
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
