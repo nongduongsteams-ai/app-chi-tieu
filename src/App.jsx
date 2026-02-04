@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
@@ -55,7 +55,7 @@ function App() {
 
   return (
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/login" element={
             user ? <Navigate to="/" replace /> : <Login onLoginSuccess={handleLogin} />
@@ -91,7 +91,7 @@ function App() {
             </ProtectedRoute>
           } />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </GoogleOAuthProvider>
   );
 }
